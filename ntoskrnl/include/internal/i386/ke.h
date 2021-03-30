@@ -722,7 +722,7 @@ KiSystemCallTrampoline(IN PVOID Handler,
         : "c"(StackBytes),
           "d"(Arguments),
           "r"(Handler)
-        : "%esp", "%esi", "%edi"
+        : "%esi", "%edi"
     );
     return Result;
 }
