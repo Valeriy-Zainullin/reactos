@@ -722,7 +722,11 @@ KiSystemCallTrampoline(IN PVOID Handler,
         : "c"(StackBytes),
           "d"(Arguments),
           "r"(Handler)
+        #if defined(__clang__)
         : "%esi", "%edi"
+        #elif defined(__GNUC__)
+        : "%esp", "%esi", "%edi"
+        #endif
     );
     return Result;
 }
