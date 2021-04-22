@@ -336,7 +336,12 @@ static BOOL get_config_key_string(HKEY hkey, const WCHAR *name, WCHAR **value)
     DWORD type, size;
     WCHAR *str;
 
-    if (hkey && !RegQueryValueExW(hkey, name, 0, &type, NULL, &size))
+    if (!hkey)
+    {
+        return FALSE;
+    }
+
+    if (!RegQueryValueExW(hkey, name, 0, &type, NULL, &size))
     {
         if (type != REG_SZ && type != REG_EXPAND_SZ)
             return FALSE;
