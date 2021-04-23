@@ -867,7 +867,7 @@ WINSPOOL_FILE_INFO_CONTAINER;
 
 interface winspool {
     /* Function 0x00 */
-    DWORD _RpcEnumPrinters(
+    DWORD __stdcall _RpcEnumPrinters(
         [in] DWORD Flags,
         [in, unique] WINSPOOL_HANDLE Name,
         [in] DWORD Level,
@@ -878,7 +878,7 @@ interface winspool {
     );
 
     /* Function 0x01 */
-    DWORD _RpcOpenPrinter(
+    DWORD __stdcall _RpcOpenPrinter(
         [in, unique] WINSPOOL_HANDLE pPrinterName,
         [out] WINSPOOL_PRINTER_HANDLE* phPrinter,
         [in, string, unique] WCHAR* pDatatype,
@@ -887,7 +887,7 @@ interface winspool {
     );
     
     /* Function 0x02 */
-    DWORD _RpcSetJob(
+    DWORD __stdcall _RpcSetJob(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in] DWORD JobId,
         [in, unique] WINSPOOL_JOB_CONTAINER* pJobContainer,
@@ -895,7 +895,7 @@ interface winspool {
     );
 
     /* Function 0x03 */
-    DWORD _RpcGetJob(
+    DWORD __stdcall _RpcGetJob(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in] DWORD JobId,
         [in] DWORD Level,
@@ -905,7 +905,7 @@ interface winspool {
     );
 
     /* Function 0x04 */
-    DWORD _RpcEnumJobs(
+    DWORD __stdcall _RpcEnumJobs(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in] DWORD FirstJob,
         [in] DWORD NoJobs,
@@ -917,7 +917,7 @@ interface winspool {
     );
 
     /* Function 0x05 */
-    DWORD _RpcAddPrinter(
+    DWORD __stdcall _RpcAddPrinter(
         [in, unique] WINSPOOL_HANDLE pName,
         [in] WINSPOOL_PRINTER_CONTAINER* pPrinterContainer,
         [in] WINSPOOL_DEVMODE_CONTAINER* pDevModeContainer,
@@ -926,12 +926,12 @@ interface winspool {
     );
 
     /* Function 0x06 */
-    DWORD _RpcDeletePrinter(
+    DWORD __stdcall _RpcDeletePrinter(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter
     );
 
     /* Function 0x07 */
-    DWORD _RpcSetPrinter(
+    DWORD __stdcall _RpcSetPrinter(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in] WINSPOOL_PRINTER_CONTAINER* pPrinterContainer,
         [in] WINSPOOL_DEVMODE_CONTAINER* pDevModeContainer,
@@ -940,7 +940,7 @@ interface winspool {
     );
 
     /* Function 0x08 */
-    DWORD _RpcGetPrinter(
+    DWORD __stdcall _RpcGetPrinter(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in] DWORD Level,
         [in, out, unique, size_is(cbBuf), disable_consistency_check] BYTE* pPrinter,
@@ -949,13 +949,13 @@ interface winspool {
     );
 
     /* Function 0x09 */
-    DWORD _RpcAddPrinterDriver(
+    DWORD __stdcall _RpcAddPrinterDriver(
         [in, unique] WINSPOOL_HANDLE pName,
         [in] WINSPOOL_DRIVER_CONTAINER* pDriverContainer
     );
 
     /* Function 0x0A */
-    DWORD _RpcEnumPrinterDrivers(
+    DWORD __stdcall _RpcEnumPrinterDrivers(
         [in, unique] WINSPOOL_HANDLE pName,
         [in, string, unique] WCHAR* pEnvironment,
         [in] DWORD Level,
@@ -966,7 +966,7 @@ interface winspool {
     );
 
     /* Function 0x0B */
-    DWORD _RpcGetPrinterDriver(
+    DWORD __stdcall _RpcGetPrinterDriver(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in, string, unique] WCHAR* pEnvironment,
         [in] DWORD Level,
@@ -976,7 +976,7 @@ interface winspool {
     );
 
     /* Function 0x0C */
-    DWORD _RpcGetPrinterDriverDirectory(
+    DWORD __stdcall _RpcGetPrinterDriverDirectory(
         [in, unique] WINSPOOL_HANDLE pName,
         [in, string, unique] WCHAR*  pEnvironment,
         [in] DWORD Level,
@@ -986,14 +986,14 @@ interface winspool {
     );
 
     /* Function 0x0D */
-    DWORD _RpcDeletePrinterDriver(
+    DWORD __stdcall _RpcDeletePrinterDriver(
         [in, unique] WINSPOOL_HANDLE pName,
         [in, string] WCHAR* pEnvironment,
         [in, string] WCHAR* pDriverName
     );
 
     /* Function 0x0E */
-    DWORD _RpcAddPrintProcessor(
+    DWORD __stdcall _RpcAddPrintProcessor(
         [in, unique] WINSPOOL_HANDLE pName,
         [in, string] WCHAR* pEnvironment,
         [in, string] WCHAR* pPathName,
@@ -1001,7 +1001,7 @@ interface winspool {
     );
 
     /* Function 0x0F */
-    DWORD _RpcEnumPrintProcessors(
+    DWORD __stdcall _RpcEnumPrintProcessors(
         [in, unique] WINSPOOL_HANDLE pName,
         [in, string, unique] WCHAR* pEnvironment,
         [in] DWORD Level,
@@ -1012,7 +1012,7 @@ interface winspool {
     );
 
     /* Function 0x10 */
-    DWORD _RpcGetPrintProcessorDirectory(
+    DWORD __stdcall _RpcGetPrintProcessorDirectory(
         [in, unique] WINSPOOL_HANDLE pName,
         [in, string, unique] WCHAR* pEnvironment,
         [in] DWORD Level,
@@ -1022,19 +1022,19 @@ interface winspool {
     );
 
     /* Function 0x11 */
-    DWORD _RpcStartDocPrinter(
+    DWORD __stdcall _RpcStartDocPrinter(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in] WINSPOOL_DOC_INFO_CONTAINER* pDocInfoContainer,
         [out] DWORD* pJobId
     );
 
     /* Function 0x12 */
-    DWORD _RpcStartPagePrinter(
+    DWORD __stdcall _RpcStartPagePrinter(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter
     );
 
     /* Function 0x13 */
-    DWORD _RpcWritePrinter(
+    DWORD __stdcall _RpcWritePrinter(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in, size_is(cbBuf)] BYTE* pBuf,
         [in] DWORD cbBuf,
@@ -1042,17 +1042,17 @@ interface winspool {
     );
 
     /* Function 0x14 */
-    DWORD _RpcEndPagePrinter(
+    DWORD __stdcall _RpcEndPagePrinter(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter
     );
 
     /* Function 0x15 */
-    DWORD _RpcAbortPrinter(
+    DWORD __stdcall _RpcAbortPrinter(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter
     );
 
     /* Function 0x16 */
-    DWORD _RpcReadPrinter(
+    DWORD __stdcall _RpcReadPrinter(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [out, size_is(cbBuf)] BYTE* pBuf,
         [in] DWORD cbBuf,
@@ -1060,12 +1060,12 @@ interface winspool {
     );
 
     /* Function 0x17 */
-    DWORD _RpcEndDocPrinter(
+    DWORD __stdcall _RpcEndDocPrinter(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter
     );
 
     /* Function 0x18 */
-    DWORD _RpcAddJob(
+    DWORD __stdcall _RpcAddJob(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in] DWORD Level,
         [in, out, unique, size_is(cbBuf), disable_consistency_check] BYTE* pAddJob,
@@ -1074,13 +1074,13 @@ interface winspool {
     );
 
     /* Function 0x19 */
-    DWORD _RpcScheduleJob(
+    DWORD __stdcall _RpcScheduleJob(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in] DWORD JobId
     );
 
     /* Function 0x1A */
-    DWORD _RpcGetPrinterData(
+    DWORD __stdcall _RpcGetPrinterData(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in, string] WCHAR* pValueName,
         [out] DWORD* pType,
@@ -1090,7 +1090,7 @@ interface winspool {
     );
 
     /* Function 0x1B */
-    DWORD _RpcSetPrinterData(
+    DWORD __stdcall _RpcSetPrinterData(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in, string] WCHAR*  pValueName,
         [in] DWORD Type,
@@ -1099,31 +1099,31 @@ interface winspool {
     );
 
     /* Function 0x1C */
-    DWORD _RpcWaitForPrinterChange(
+    DWORD __stdcall _RpcWaitForPrinterChange(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in] DWORD Flags,
         [out] DWORD* pFlags
     );
 
     /* Function 0x1D */
-    DWORD _RpcClosePrinter(
+    DWORD __stdcall _RpcClosePrinter(
         [in, out] WINSPOOL_PRINTER_HANDLE* phPrinter
     );
 
     /* Function 0x1E */
-    DWORD _RpcAddForm(
+    DWORD __stdcall _RpcAddForm(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in] WINSPOOL_FORM_CONTAINER* pFormInfoContainer
     );
 
     /* Function 0x1F */
-    DWORD _RpcDeleteForm(
+    DWORD __stdcall _RpcDeleteForm(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in, string] WCHAR* pFormName
     );
 
     /* Function 0x20 */
-    DWORD _RpcGetForm(
+    DWORD __stdcall _RpcGetForm(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in, string] WCHAR* pFormName,
         [in] DWORD Level,
@@ -1133,14 +1133,14 @@ interface winspool {
     );
 
     /* Function 0x21 */
-    DWORD _RpcSetForm(
+    DWORD __stdcall _RpcSetForm(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in, string] WCHAR* pFormName,
         [in] WINSPOOL_FORM_CONTAINER* pFormInfoContainer
     );
 
     /* Function 0x22 */
-    DWORD _RpcEnumForms(
+    DWORD __stdcall _RpcEnumForms(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in] DWORD Level,
         [in, out, unique, size_is(cbBuf), disable_consistency_check] BYTE* pForm,
@@ -1150,7 +1150,7 @@ interface winspool {
     );
 
     /* Function 0x23 */
-    DWORD _RpcEnumPorts(
+    DWORD __stdcall _RpcEnumPorts(
         [in, unique] WINSPOOL_HANDLE pName,
         [in] DWORD Level,
         [in, out, unique, size_is(cbBuf), disable_consistency_check] BYTE* pPort,
@@ -1160,7 +1160,7 @@ interface winspool {
     );
 
     /* Function 0x24 */
-    DWORD _RpcEnumMonitors(
+    DWORD __stdcall _RpcEnumMonitors(
         [in, unique] WINSPOOL_HANDLE pName,
         [in] DWORD Level,
         [in, out, unique, size_is(cbBuf), disable_consistency_check] BYTE* pMonitor,
@@ -1170,35 +1170,35 @@ interface winspool {
     );
 
     /* Function 0x25 */
-    DWORD _RpcAddPort(
+    DWORD __stdcall _RpcAddPort(
         [in, unique] WINSPOOL_HANDLE pName,
         [in] ULONG_PTR hWnd,
         [in, string] WCHAR* pMonitorName
     );
 
     /* Function 0x26 */
-    DWORD _RpcConfigurePort(
+    DWORD __stdcall _RpcConfigurePort(
         [in, unique] WINSPOOL_HANDLE pName,
         [in] ULONG_PTR hWnd,
         [in, string] WCHAR* pPortName
     );
 
     /* Function 0x27 */
-    DWORD _RpcDeletePort(
+    DWORD __stdcall _RpcDeletePort(
         [in, unique] WINSPOOL_HANDLE pName,
         [in] ULONG_PTR hWnd,
         [in, string] WCHAR* pPortName
     );
 
     /* Function 0x28 */
-    DWORD _RpcCreatePrinterIC(
+    DWORD __stdcall _RpcCreatePrinterIC(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [out] WINSPOOL_GDI_HANDLE* pHandle,
         [in] WINSPOOL_DEVMODE_CONTAINER* pDevModeContainer
     );
 
     /* Function 0x29 */
-    DWORD _RpcPlayGdiScriptOnPrinterIC(
+    DWORD __stdcall _RpcPlayGdiScriptOnPrinterIC(
         [in] WINSPOOL_GDI_HANDLE hPrinterIC,
         [in, size_is(cIn)] BYTE* pIn,
         [in] DWORD cIn,
@@ -1208,22 +1208,22 @@ interface winspool {
     );
 
     /* Function 0x2A */
-    DWORD _RpcDeletePrinterIC(
+    DWORD __stdcall _RpcDeletePrinterIC(
         [in, out] WINSPOOL_GDI_HANDLE* phPrinterIC
     );
 
     /* Function 0x2B */
-    DWORD _RpcAddPrinterConnection(
+    DWORD __stdcall _RpcAddPrinterConnection(
         [in, unique] WINSPOOL_HANDLE pName
     );
 
     /* Function 0x2C */
-    DWORD _RpcDeletePrinterConnection(
+    DWORD __stdcall _RpcDeletePrinterConnection(
         [in, unique] WINSPOOL_HANDLE pName
     );
 
     /* Function 0x2D */
-    DWORD _RpcPrinterMessageBox(
+    DWORD __stdcall _RpcPrinterMessageBox(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in] DWORD Error,
         [in] ULONG_PTR hWnd,
@@ -1233,40 +1233,40 @@ interface winspool {
     );
 
     /* Function 0x2E */
-    DWORD _RpcAddMonitor(
+    DWORD __stdcall _RpcAddMonitor(
         [in, unique] WINSPOOL_HANDLE pName,
         [in] WINSPOOL_MONITOR_CONTAINER* pMonitorContainer
     );
 
     /* Function 0x2F */
-    DWORD _RpcDeleteMonitor(
+    DWORD __stdcall _RpcDeleteMonitor(
         [in, unique] WINSPOOL_HANDLE pName,
         [in, string, unique] WCHAR* pEnvironment,
         [in, string, unique] WCHAR* pMonitorName
     );
 
     /* Function 0x30 */
-    DWORD _RpcDeletePrintProcessor(
+    DWORD __stdcall _RpcDeletePrintProcessor(
         [in, unique] WINSPOOL_HANDLE pName,
         [in, string, unique] WCHAR* pEnvironment,
         [in, string] WCHAR* pPrintProcessorName
     );
 
     /* Function 0x31 */
-    DWORD _RpcAddPrintProvidor(
+    DWORD __stdcall _RpcAddPrintProvidor(
         [in, unique] WINSPOOL_HANDLE pName,
         [in] WINSPOOL_PROVIDOR_CONTAINER* pProvidorContainer
     );
 
     /* Function 0x32 */
-    DWORD _RpcDeletePrintProvidor(
+    DWORD __stdcall _RpcDeletePrintProvidor(
         [in, unique] WINSPOOL_HANDLE pName,
         [in, string, unique] WCHAR* pEnvironment,
         [in, string] WCHAR* pPrintProviderName
     );
 
     /* Function 0x33 */
-    DWORD _RpcEnumPrintProcessorDatatypes(
+    DWORD __stdcall _RpcEnumPrintProcessorDatatypes(
         [in, unique] WINSPOOL_HANDLE pName,
         [in, string, unique] WCHAR* pPrintProcessorName,
         [in] DWORD Level,
@@ -1277,14 +1277,14 @@ interface winspool {
     );
 
     /* Function 0x34 */
-    DWORD _RpcResetPrinter(
+    DWORD __stdcall _RpcResetPrinter(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in, string, unique] WCHAR* pDatatype,
         [in] WINSPOOL_DEVMODE_CONTAINER* pDevModeContainer
     );
 
     /* Function 0x35 */
-    DWORD _RpcGetPrinterDriver2(
+    DWORD __stdcall _RpcGetPrinterDriver2(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in, string, unique] WCHAR* pEnvironment,
         [in] DWORD Level,
@@ -1298,27 +1298,27 @@ interface winspool {
     );
 
     /* Function 0x36 (TODO) */
-    DWORD _RpcClientFindFirstPrinterChangeNotification(
+    DWORD __stdcall _RpcClientFindFirstPrinterChangeNotification(
         /* TODO */
     );
 
     /* Function 0x37 (TODO) */
-    DWORD _RpcFindNextPrinterChangeNotification(
+    DWORD __stdcall _RpcFindNextPrinterChangeNotification(
         /* TODO */
     );
 
     /* Function 0x38 (TODO) */
-    DWORD _RpcFindClosePrinterChangeNotification(
+    DWORD __stdcall _RpcFindClosePrinterChangeNotification(
         /* TODO */
     );
 
     /* Function 0x39 (TODO) */
-    DWORD _RpcRouterFindFirstPrinterChangeNotificationOld(
+    DWORD __stdcall _RpcRouterFindFirstPrinterChangeNotificationOld(
         /* TODO */
     );
 
     /* Function 0x3A */
-    DWORD _RpcReplyOpenPrinter(
+    DWORD __stdcall _RpcReplyOpenPrinter(
         [in] WINSPOOL_HANDLE pMachine,
         [out] WINSPOOL_PRINTER_HANDLE* phPrinterNotify,
         [in] DWORD dwPrinterRemote,
@@ -1328,7 +1328,7 @@ interface winspool {
     );
 
     /* Function 0x3B */
-    DWORD _RpcRouterReplyPrinter(
+    DWORD __stdcall _RpcRouterReplyPrinter(
         [in] WINSPOOL_PRINTER_HANDLE hNotify,
         [in] DWORD fdwFlags,
         [in, range(0, 512)] DWORD cbBuffer,
@@ -1336,12 +1336,12 @@ interface winspool {
     );
 
     /* Function 0x3C */
-    DWORD _RpcReplyClosePrinter(
+    DWORD __stdcall _RpcReplyClosePrinter(
         [in, out] WINSPOOL_PRINTER_HANDLE* phNotify
     );
 
     /* Function 0x3D */
-    DWORD _RpcAddPortEx(
+    DWORD __stdcall _RpcAddPortEx(
         [in, unique] WINSPOOL_HANDLE pName,
         [in] WINSPOOL_PORT_CONTAINER* pPortContainer,
         [in] WINSPOOL_PORT_VAR_CONTAINER* pPortVarContainer,
@@ -1349,7 +1349,7 @@ interface winspool {
     );
 
     /* Function 0x3E */
-    DWORD _RpcRemoteFindFirstPrinterChangeNotification(
+    DWORD __stdcall _RpcRemoteFindFirstPrinterChangeNotification(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in] DWORD fdwFlags,
         [in] DWORD fdwOptions,
@@ -1360,10 +1360,10 @@ interface winspool {
     );
 
     /* Function 0x3F */
-    DWORD _RpcSpoolerInit();
+    DWORD __stdcall _RpcSpoolerInit();
 
     /* Function 0x40 */
-    DWORD _RpcResetPrinterEx(
+    DWORD __stdcall _RpcResetPrinterEx(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in, string, unique] WCHAR* pDatatype,
         [in] WINSPOOL_DEVMODE_CONTAINER* pDevModeContainer,
@@ -1371,7 +1371,7 @@ interface winspool {
     );
 
     /* Function 0x41 */
-    DWORD _RpcRemoteFindFirstPrinterChangeNotificationEx(
+    DWORD __stdcall _RpcRemoteFindFirstPrinterChangeNotificationEx(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in] DWORD fdwFlags,
         [in] DWORD fdwOptions,
@@ -1381,7 +1381,7 @@ interface winspool {
     );
 
     /* Function 0x42 */
-    DWORD _RpcRouterReplyPrinterEx(
+    DWORD __stdcall _RpcRouterReplyPrinterEx(
         [in] WINSPOOL_PRINTER_HANDLE hNotify,
         [in] DWORD dwColor,
         [in] DWORD fdwFlags,
@@ -1391,7 +1391,7 @@ interface winspool {
     );
 
     /* Function 0x43 */
-    DWORD _RpcRouterRefreshPrinterChangeNotification(
+    DWORD __stdcall _RpcRouterRefreshPrinterChangeNotification(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in] DWORD dwColor,
         [in, unique] WINSPOOL_V2_NOTIFY_OPTIONS* pOptions,
@@ -1399,12 +1399,12 @@ interface winspool {
     );
 
     /* Function 0x44 (TODO) */
-    DWORD _RpcSetAllocFailCount(
+    DWORD __stdcall _RpcSetAllocFailCount(
         /* TODO */
     );
 
     /* Function 0x45 */
-    DWORD _RpcOpenPrinterEx(
+    DWORD __stdcall _RpcOpenPrinterEx(
         [in, unique] WINSPOOL_HANDLE pPrinterName,
         [out] WINSPOOL_PRINTER_HANDLE* pHandle,
         [in, string, unique] WCHAR* pDatatype,
@@ -1414,7 +1414,7 @@ interface winspool {
     );
 
     /* Function 0x46 */
-    DWORD _RpcAddPrinterEx(
+    DWORD __stdcall _RpcAddPrinterEx(
         [in, unique] WINSPOOL_HANDLE pName,
         [in] WINSPOOL_PRINTER_CONTAINER* pPrinterContainer,
         [in] WINSPOOL_DEVMODE_CONTAINER* pDevModeContainer,
@@ -1424,14 +1424,14 @@ interface winspool {
     );
 
     /* Function 0x47 */
-    DWORD _RpcSetPort(
+    DWORD __stdcall _RpcSetPort(
         [in, unique] WINSPOOL_HANDLE pName,
         [in, string, unique] WCHAR* pPortName,
         [in] WINSPOOL_PORT_CONTAINER* pPortContainer
     );
 
     /* Function 0x48 */
-    DWORD _RpcEnumPrinterData(
+    DWORD __stdcall _RpcEnumPrinterData(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in] DWORD dwIndex,
         [out, size_is(cbValueName / sizeof(WCHAR))] WCHAR* pValueName,
@@ -1444,28 +1444,28 @@ interface winspool {
     );
 
     /* Function 0x49 */
-    DWORD _RpcDeletePrinterData(
+    DWORD __stdcall _RpcDeletePrinterData(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in, string] WCHAR* pValueName
     );
 
     /* Function 0x4A (TODO) */
-    DWORD _RpcClusterSplOpen(
+    DWORD __stdcall _RpcClusterSplOpen(
         /* TODO */
     );
 
     /* Function 0x4B (TODO) */
-    DWORD _RpcClusterSplClose(
+    DWORD __stdcall _RpcClusterSplClose(
         /* TODO */
     );
 
     /* Function 0x4C (TODO) */
-    DWORD _RpcClusterSplIsAlive(
+    DWORD __stdcall _RpcClusterSplIsAlive(
         /* TODO */
     );
 
     /* Function 0x4D */
-    DWORD _RpcSetPrinterDataEx(
+    DWORD __stdcall _RpcSetPrinterDataEx(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in, string] const WCHAR* pKeyName,
         [in, string] const WCHAR* pValueName,
@@ -1475,7 +1475,7 @@ interface winspool {
     );
 
     /* Function 0x4E */
-    DWORD _RpcGetPrinterDataEx(
+    DWORD __stdcall _RpcGetPrinterDataEx(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in, string] const WCHAR* pKeyName,
         [in, string] const WCHAR* pValueName,
@@ -1486,7 +1486,7 @@ interface winspool {
     );
 
     /* Function 0x4F */
-    DWORD _RpcEnumPrinterDataEx(
+    DWORD __stdcall _RpcEnumPrinterDataEx(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in, string]  const WCHAR* pKeyName,
         [out, size_is(cbEnumValues)] BYTE* pEnumValues,
@@ -1496,7 +1496,7 @@ interface winspool {
     );
 
     /* Function 0x50 */
-    DWORD _RpcEnumPrinterKey(
+    DWORD __stdcall _RpcEnumPrinterKey(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in, string] const WCHAR* pKeyName,
         [out, size_is(cbSubkey / sizeof(WCHAR))] WCHAR* pSubkey,
@@ -1505,20 +1505,20 @@ interface winspool {
     );
 
     /* Function 0x51 */
-    DWORD _RpcDeletePrinterDataEx(
+    DWORD __stdcall _RpcDeletePrinterDataEx(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in, string] const WCHAR* pKeyName,
         [in, string] const WCHAR* pValueName
     );
 
     /* Function 0x52 */
-    DWORD _RpcDeletePrinterKey(
+    DWORD __stdcall _RpcDeletePrinterKey(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in, string] const WCHAR* pKeyName
     );
 
     /* Function 0x53 */
-    DWORD _RpcSeekPrinter(
+    DWORD __stdcall _RpcSeekPrinter(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in] LARGE_INTEGER liDistanceToMove,
         [out] PLARGE_INTEGER pliNewPointer,
@@ -1527,7 +1527,7 @@ interface winspool {
     );
 
     /* Function 0x54 */
-    DWORD _RpcDeletePrinterDriverEx(
+    DWORD __stdcall _RpcDeletePrinterDriverEx(
         [in, unique] WINSPOOL_HANDLE pName,
         [in, string] WCHAR* pEnvironment,
         [in, string] WCHAR* pDriverName,
@@ -1536,7 +1536,7 @@ interface winspool {
     );
 
     /* Function 0x55 */
-    DWORD _RpcAddPerMachineConnection(
+    DWORD __stdcall _RpcAddPerMachineConnection(
         [in, unique] WINSPOOL_HANDLE pServer,
         [in, string] const WCHAR*  pPrinterName,
         [in, string] const WCHAR*  pPrintServer,
@@ -1544,13 +1544,13 @@ interface winspool {
     );
 
     /* Function 0x56 */
-    DWORD _RpcDeletePerMachineConnection(
+    DWORD __stdcall _RpcDeletePerMachineConnection(
         [in, unique] WINSPOOL_HANDLE pServer,
         [in, string] const WCHAR*  pPrinterName
     );
 
     /* Function 0x57 */
-    DWORD _RpcEnumPerMachineConnections(
+    DWORD __stdcall _RpcEnumPerMachineConnections(
         [in, unique]  WINSPOOL_HANDLE pServer,
         [in, out, unique, size_is(cbBuf), disable_consistency_check] BYTE* pPrinterEnum,
         [in]  DWORD cbBuf,
@@ -1559,7 +1559,7 @@ interface winspool {
     );
 
     /* Function 0x58 */
-    DWORD _RpcXcvData(
+    DWORD __stdcall _RpcXcvData(
         [in, unique] WINSPOOL_PRINTER_HANDLE hXcv,
         [in, string]  const WCHAR* pszDataName,
         [in, size_is(cbInputData)] BYTE* pInputData,
@@ -1571,19 +1571,19 @@ interface winspool {
     );
 
     /* Function 0x59 */
-    DWORD _RpcAddPrinterDriverEx(
+    DWORD __stdcall _RpcAddPrinterDriverEx(
         [in, unique] WINSPOOL_HANDLE pName,
         [in] WINSPOOL_DRIVER_CONTAINER* pDriverContainer,
         [in] DWORD dwFileCopyFlags
     );
 
     /* Function 0x5A (TODO) */
-    DWORD _RpcSplOpenPrinter(
+    DWORD __stdcall _RpcSplOpenPrinter(
         /* TODO */
     );
 
     /* Function 0x5B */
-    DWORD _RpcGetSpoolFileInfo(
+    DWORD __stdcall _RpcGetSpoolFileInfo(
         [in, unique] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in] WINSPOOL_HANDLE hProcessHandle,
         [in] DWORD Level,
@@ -1593,7 +1593,7 @@ interface winspool {
     );
 
     /* Function 0x5C */
-    DWORD _RpcCommitSpoolData(
+    DWORD __stdcall _RpcCommitSpoolData(
         [in, unique] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in, unique] WINSPOOL_HANDLE hProcessHandle,
         [in] DWORD cbCommit,
@@ -1604,7 +1604,7 @@ interface winspool {
     );
 
     /* Function 0x5D */
-    DWORD _RpcGetSpoolFileInfo2(
+    DWORD __stdcall _RpcGetSpoolFileInfo2(
         [in, unique] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in] DWORD dwProcessId,
         [in] DWORD Level,
@@ -1612,7 +1612,7 @@ interface winspool {
     );
 
     /* Function 0x5E */
-    DWORD _RpcCommitSpoolData2(
+    DWORD __stdcall _RpcCommitSpoolData2(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in] DWORD dwProcessId,
         [in] DWORD cbCommit,
@@ -1621,12 +1621,12 @@ interface winspool {
     );
 
     /* Function 0x5F */
-    DWORD _RpcCloseSpoolFileHandle(
+    DWORD __stdcall _RpcCloseSpoolFileHandle(
         [in, unique] WINSPOOL_PRINTER_HANDLE hPrinter
     );
 
     /* Function 0x60 */
-    DWORD _RpcFlushPrinter(
+    DWORD __stdcall _RpcFlushPrinter(
         [in, unique] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in, size_is(cbBuf)] BYTE* pBuf,
         [in] DWORD cbBuf,
@@ -1635,7 +1635,7 @@ interface winspool {
     );
 
     /* Function 0x61 */
-    DWORD _RpcSendRecvBidiData(
+    DWORD __stdcall _RpcSendRecvBidiData(
         [in] WINSPOOL_PRINTER_HANDLE hPrinter,
         [in, string, unique] const WCHAR* pAction,
         [in] WINSPOOL_BIDI_REQUEST_CONTAINER* pReqData,
@@ -1643,7 +1643,7 @@ interface winspool {
     );
 
     /* Function 0x62 (TODO) */
-    DWORD _RpcAddDriverCatalog(
+    DWORD __stdcall _RpcAddDriverCatalog(
         /* TODO */
     );
 }
