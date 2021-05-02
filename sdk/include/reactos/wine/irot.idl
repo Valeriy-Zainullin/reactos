@@ -56,7 +56,7 @@ interface Irot
 	typedef handle_t IrotHandle;
 	typedef [context_handle] void *IrotContextHandle;
 
-	HRESULT IrotRegister(
+	HRESULT __stdcall IrotRegister(
 		[in]  IrotHandle h,
 		[in]  const MonikerComparisonData *moniker_data,
 		[in]  const InterfaceData *object,
@@ -66,34 +66,34 @@ interface Irot
 		[out] IrotCookie *cookie,
 		[out] IrotContextHandle *ctxt_handle);
 
-	HRESULT IrotRevoke(
+	HRESULT __stdcall IrotRevoke(
 		[in]  IrotHandle h,
 		[in]  IrotCookie cookie,
 		[in, out] IrotContextHandle *ctxt_handle,
 		[out] PInterfaceData *object,
 		[out] PInterfaceData *moniker);
 
-	HRESULT IrotIsRunning(
+	HRESULT __stdcall IrotIsRunning(
 		[in]  IrotHandle h,
 		[in]  const MonikerComparisonData *moniker_data);
 
-	HRESULT IrotGetObject(
+	HRESULT __stdcall IrotGetObject(
 		[in]  IrotHandle h,
 		[in]  const MonikerComparisonData *moniker_data,
 		[out] PInterfaceData *obj,
 		[out] IrotCookie *cookie);
 
-	HRESULT IrotNoteChangeTime(
+	HRESULT __stdcall IrotNoteChangeTime(
 		[in]  IrotHandle h,
 		[in]  IrotCookie cookie,
 		[in]  const FILETIME *time);
 
-	HRESULT IrotGetTimeOfLastChange(
+	HRESULT __stdcall IrotGetTimeOfLastChange(
 		[in]  IrotHandle h,
 		[in]  const MonikerComparisonData *moniker_data,
 		[out] FILETIME *time);
 
-	HRESULT IrotEnumRunning(
+	HRESULT __stdcall IrotEnumRunning(
 		[in]  IrotHandle h,
 		[out] PInterfaceList *list);
 }

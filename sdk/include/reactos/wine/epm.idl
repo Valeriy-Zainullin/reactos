@@ -48,7 +48,7 @@ interface epm
     typedef [context_handle] void *ept_lookup_handle_t;
 
     /* Adds entries to an endpoint map */
-    void ept_insert(
+    void __stdcall ept_insert(
         [in]    handle_t            h,
         [in]    unsigned32          num_ents,
         [in, size_is(num_ents)]
@@ -58,7 +58,7 @@ interface epm
     );
 
     /* Removes entries from an endpoint map */
-    void ept_delete(
+    void __stdcall ept_delete(
         [in]    handle_t            h,
         [in]    unsigned32          num_ents,
         [in, size_is(num_ents)]
@@ -68,7 +68,7 @@ interface epm
 
     /* Lookup entries in an endpoint map */
     [idempotent]
-    void ept_lookup(
+    void __stdcall ept_lookup(
         [in]        handle_t            h,
         [in]        unsigned32          inquiry_type,
         [in]        uuid_p_t            object,
@@ -84,7 +84,7 @@ interface epm
 
     /* Lookup entries in an endpoint map using the given input pattern */
     [idempotent]
-    void ept_map(
+    void __stdcall ept_map(
         [in]        handle_t            h,
         [in]        uuid_p_t            object,
         [in]        twr_p_t             map_tower,
@@ -97,7 +97,7 @@ interface epm
     );
 
     /* Free the context handle returned by ept_lookup or ept_map */
-    void ept_lookup_handle_free(
+    void __stdcall ept_lookup_handle_free(
         [in]        handle_t            h,
         [in, out]   ept_lookup_handle_t *entry_handle,
         [out]       error_status_t      *status
@@ -105,14 +105,14 @@ interface epm
 
     /* Inquires as to the endpoint map's object identifier */
     [idempotent]
-    void ept_inq_object(
+    void __stdcall ept_inq_object(
         [in]        handle_t            h,
         [out]       GUID                *ept_object,
         [out]       error_status_t      *status
     );
 
     /* Deletes matching entries in the endpoint map */
-    void ept_mgmt_delete(
+    void __stdcall ept_mgmt_delete(
         [in]        handle_t            h,
         [in]        boolean32           object_speced,
         [in]        uuid_p_t            object,

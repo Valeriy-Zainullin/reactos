@@ -68,7 +68,7 @@ static inline void rot_entry_release(struct rot_entry *rot_entry)
     }
 }
 
-HRESULT __cdecl IrotRegister(
+HRESULT __stdcall IrotRegister(
     IrotHandle h,
     const MonikerComparisonData *data,
     const InterfaceData *obj,
@@ -148,7 +148,7 @@ HRESULT __cdecl IrotRegister(
     return hr;
 }
 
-HRESULT __cdecl IrotRevoke(
+HRESULT __stdcall IrotRevoke(
     IrotHandle h,
     IrotCookie cookie,
     IrotContextHandle *ctxt_handle,
@@ -195,7 +195,7 @@ HRESULT __cdecl IrotRevoke(
     return E_INVALIDARG;
 }
 
-HRESULT __cdecl IrotIsRunning(
+HRESULT __stdcall IrotIsRunning(
     IrotHandle h,
     const MonikerComparisonData *data)
 {
@@ -220,7 +220,7 @@ HRESULT __cdecl IrotIsRunning(
     return hr;
 }
 
-HRESULT __cdecl IrotGetObject(
+HRESULT __stdcall IrotGetObject(
     IrotHandle h,
     const MonikerComparisonData *moniker_data,
     PInterfaceData *obj,
@@ -262,7 +262,7 @@ HRESULT __cdecl IrotGetObject(
     return MK_E_UNAVAILABLE;
 }
 
-HRESULT __cdecl IrotNoteChangeTime(
+HRESULT __stdcall IrotNoteChangeTime(
     IrotHandle h,
     IrotCookie cookie,
     const FILETIME *last_modified_time)
@@ -286,7 +286,7 @@ HRESULT __cdecl IrotNoteChangeTime(
     return E_INVALIDARG;
 }
 
-HRESULT __cdecl IrotGetTimeOfLastChange(
+HRESULT __stdcall IrotGetTimeOfLastChange(
     IrotHandle h,
     const MonikerComparisonData *moniker_data,
     FILETIME *time)
@@ -314,7 +314,7 @@ HRESULT __cdecl IrotGetTimeOfLastChange(
     return hr;
 }
 
-HRESULT __cdecl IrotEnumRunning(
+HRESULT __stdcall IrotEnumRunning(
     IrotHandle h,
     PInterfaceList *list)
 {
