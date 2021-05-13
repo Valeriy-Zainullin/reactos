@@ -374,7 +374,7 @@ static inline UINT get_palette_index(BYTE r, BYTE g, BYTE b, BYTE a, ColorPalett
     */
     for(i=0;i<palette->Count;i++) {
         ARGB color=palette->Entries[i];
-        distance=abs(b-(color & 0xff)) + abs(g-(color>>8 & 0xff)) + abs(r-(color>>16 & 0xff)) + abs(a-(color>>24 & 0xff));
+        distance=(b-(color & 0xff)) + (g-(color>>8 & 0xff)) + (r-(color>>16 & 0xff)) + (a-(color>>24 & 0xff));
         if (distance<best_distance) {
             best_distance=distance;
             index=i;
@@ -5725,7 +5725,7 @@ GpStatus WINGDIPAPI GdipInitializePalette(ColorPalette *palette,
         ColorPalette *wic_palette;
         GpStatus status = Ok;
 
-        wic_palette = get_palette(NULL, type);
+        wic_palette = get_palette(NULL, (WICBitmapPaletteType)type);
         if (!wic_palette) return OutOfMemory;
 
         if (palette->Count >= wic_palette->Count)
