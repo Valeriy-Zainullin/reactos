@@ -83,22 +83,22 @@ OpenGLCurveEvaluator::~OpenGLCurveEvaluator(void)
 void
 OpenGLCurveEvaluator::addMap(CurveMap *m)
 {
-	m = m;
+  UNREFERENCED_PARAMETER(m);
 }
 
 void
 OpenGLCurveEvaluator::range1f(long type, REAL *from, REAL *to)
 {
-	type = type;
-	from = from;
-	to = to;
+  UNREFERENCED_PARAMETER(type);
+  UNREFERENCED_PARAMETER(from);
+  UNREFERENCED_PARAMETER(to);
 }
 
 void
 OpenGLCurveEvaluator::domain1f(REAL ulo, REAL uhi)
 {
-	ulo = ulo;
-	uhi = uhi;
+  UNREFERENCED_PARAMETER(ulo);
+  UNREFERENCED_PARAMETER(uhi);
 }
 
 void

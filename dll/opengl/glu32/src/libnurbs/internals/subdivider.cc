@@ -657,7 +657,7 @@ source.show("source\n");
 void
 Subdivider::findIrregularS( Bin& bin )
 {
-    assert( bin.firstarc()->check() != 0 );
+    assert( bin.firstarc() == nullptr || bin.firstarc()->check() != 0 );
 
     smbrkpts.grow( bin.numarcs() );
 
@@ -721,7 +721,7 @@ Subdivider::findIrregularS( Bin& bin )
 void
 Subdivider::findIrregularT( Bin& bin )
 {
-    assert( bin.firstarc()->check() != 0 );
+    assert( bin.firstarc() == nullptr || bin.firstarc()->check() != 0 );
 
     tmbrkpts.grow( bin.numarcs() );
 

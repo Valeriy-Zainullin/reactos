@@ -218,12 +218,14 @@ Arc::isDisconnected( void )
  * neq_vert - assert that two 2D vertices are not equal
  *-------------------------------------------------------------------------
  */
-
+// Unused function.
+/*
 inline static int
 neq_vert( REAL	*v1, REAL *v2 )
 {
      return ((v1[0] != v2[0]) || (v1[1] != v2[1] )) ? 1 : 0;
 }
+*/
 
 /*-------------------------------------------------------------------------
  * check - verify consistency of a loop, including
@@ -236,7 +238,6 @@ neq_vert( REAL	*v1, REAL *v2 )
 int
 Arc::check( void )
 {
-    if( this == 0 ) return 1;
     Arc_ptr jarc = this;
     do {
 	assert( (jarc->pwlArc != 0) || (jarc->bezierArc != 0) );

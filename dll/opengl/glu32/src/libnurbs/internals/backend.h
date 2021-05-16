@@ -104,9 +104,13 @@ private:
 #ifndef NOWIREFRAME
     int			wireframetris;
     int			wireframequads;
+
+    // Unused fields.
+/*
     int			npts;
     REAL		mesh[3][4];
     int			meshindex;
+*/
 #endif
 };
 
